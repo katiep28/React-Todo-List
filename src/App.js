@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
+import ToDoList from "./ToDoList";
+import CompletedTasks from "./CompletedTasks"
+import DeletedTasks from "./DeletedTasks";
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+class App extends React.Component {
+  //Every component must have a render method
+  render() {
+    return (
+      <div>
+        <h1> Lists Lists Lists (L3)</h1>
+        <h3> Things I need to do.</h3>
+        {/* to short cut a tag of there is nothing in */}
 
+        <ToDoList></ToDoList>
+        <CompletedTasks></CompletedTasks>
+    
+        <DeletedTasks></DeletedTasks>
+      </div>
+      )
+        }
+      }
 export default App;

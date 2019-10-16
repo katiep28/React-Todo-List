@@ -1,0 +1,14 @@
+h1 {
+    color: white;
+    text-align: center;
+}
+h2 {
+    text-align: center;
+}
+
+.col-red{
+    background-color: crimson;
+}
+.text_white {
+    text-decoration-color: aliceblue;
+}
