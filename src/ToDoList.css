@@ -9,8 +9,15 @@ h5{
     color: white;
     text-align: right;
 }
+.text{    color: white;
+    font-size: x-large;
+
+}
  .col-blue {
     background-color: rgba(20, 73, 220, 0.844);
+}
+ .col-ltblue {
+    background-color: dodgerblue;
 }
 li {
     font-size: large;

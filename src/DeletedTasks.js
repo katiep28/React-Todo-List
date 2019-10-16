@@ -6,11 +6,11 @@ class DeletedTasks extends React.Component {
     return (
       <div className="Container">
          <div className="row justify-content-end">
-          <div className="col-6 col-sm-4 col-red">
+          <div className="col-4 col-red">
             <h1>Deleted Items</h1>
             <ol>
-              <li>Bought Cat Food</li>
-              <li>Bought Dog Food</li>
+              <li>Buy Cat Food</li>
+              <li>Buy Dog Food</li>
             </ol>
           </div>
          </div>

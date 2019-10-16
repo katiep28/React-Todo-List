@@ -1,2 +1,8 @@
 
-
+h3 {
+  color: black;
+  text-align: center;
+}
+.col-blue {
+  background-color: rgba(20, 73, 220, 0.844);
+}

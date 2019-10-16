@@ -11,14 +11,30 @@ class App extends React.Component {
       <div>
         <h1> Lists Lists Lists (L3)</h1>
         <h3> Things I need to do.</h3>
-        {/* to short cut a tag of there is nothing in */}
+      
+       
+        <div className="container">
+          <div className="row">
+            <div clssName="col-6">
+              <h3> To Do </h3>
+            </div>
+          </div>
 
-        <ToDoList></ToDoList>
+          <ol>
+            <ToDoList text="Take the cat for a walk" />
+            <ToDoList text="Hoover the grass" />
+            <ToDoList text="Cut the carpet" />
+            <ToDoList text="Mop the beds" />
+            <ToDoList text="Polish the dog" />
+          </ol>
+        </div>
+        
         <CompletedTasks></CompletedTasks>
-    
+
         <DeletedTasks></DeletedTasks>
-      </div>
-      )
-        }
-      }
+  
+    </div>
+    )
+  }
+}
 export default App;
