@@ -6,9 +6,10 @@ class ToDoList extends React.Component {
   render() {
     return (
 
-        <div className="row">
+      <div className="row">
         <div className="col-3  col-blue">
-          <div class="text-white">
+          {/* <div class="text-white x-large"> */}
+          <div>
             {this.props.text}
           </div>
         </div>
@@ -19,7 +20,7 @@ class ToDoList extends React.Component {
           <button className="btn btn-danger"> Delete</button>
         </div>
       </div>
-      
+
 
 
     );

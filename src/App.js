@@ -2,6 +2,8 @@ import React from 'react';
 import ToDoList from "./ToDoList";
 import CompletedTasks from "./CompletedTasks"
 import DeletedTasks from "./DeletedTasks";
+import AddItem from "./AddItem";
+import ItemCount from "./ItemCount";
 import './App.css';
 
 class App extends React.Component {
@@ -11,12 +13,14 @@ class App extends React.Component {
       <div>
         <h1> Lists Lists Lists (L3)</h1>
         <h3> Things I need to do.</h3>
-      
-       
+
+        <AddItem />
+
         <div className="container">
           <div className="row">
-            <div clssName="col-6">
-              <h3> To Do </h3>
+            <div clssName="col-6" >
+
+              <ItemCount count={5} />
             </div>
           </div>
 
@@ -28,12 +32,12 @@ class App extends React.Component {
             <ToDoList text="Polish the dog" />
           </ol>
         </div>
-        
+
         <CompletedTasks></CompletedTasks>
 
         <DeletedTasks></DeletedTasks>
-  
-    </div>
+
+      </div>
     )
   }
 }

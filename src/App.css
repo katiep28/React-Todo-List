@@ -1,8 +1,17 @@
+h1 {
+  color: fuchsia;;
+  text-align: center;
+}
 
 h3 {
   color: black;
   text-align: center;
 }
+
 .col-blue {
   background-color: rgba(20, 73, 220, 0.844);
+}
+ol{    
+  color: white;
+  font-size: large;
 }

@@ -8,7 +8,7 @@ class CompletedTasks extends React.Component {
         {/* <div className="row justify-content-end"> */}
         <div className="row justify-content-end">
           <div className="col-4 col-yell">
-            <h1>Completed Items</h1>
+            <h4>Completed Items</h4>
             <ol>
               <li>Ate Lunch</li>
               <li>Drank Wine</li>
