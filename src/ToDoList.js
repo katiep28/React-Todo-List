@@ -7,22 +7,18 @@ class ToDoList extends React.Component {
     return (
 
       <div className="row">
-        <div className="col-3  col-blue">
-          {/* <div class="text-white x-large"> */}
+        <div className="col-6  col-blue">
           <div>
-            {this.props.text}
+            <li>{this.props.text}</li>
           </div>
         </div>
-        <div className="col-1">
+        <div className="col-3">
           <button className="btn btn-success">Complete</button>
         </div>
-        <div className="col-1">
+        <div className="col-3">
           <button className="btn btn-danger"> Delete</button>
         </div>
       </div>
-
-
-
     );
   }
 }
