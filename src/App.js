@@ -28,10 +28,15 @@ class App extends React.Component {
                 <ToDoList text="Cut the carpet" />
                 <ToDoList text="Mop the beds" />
                 <ToDoList text="Polish the dog" />
+                <ToDoList text="Tidy the shed" />
+                <ToDoList text="Prune the curtains" />
+                <ToDoList text="Drain the pond" />
+                <ToDoList text="Finish web page" />
+                <ToDoList text="Create another list item" />
               </ol>
           </div>
           <div clssName="col-2" >
-               <h3> how do i make this invisible</h3>
+               <h3 className="invisible"> how do i make this invisible</h3>
               <CompletedTasks />
               <DeletedTasks />  
           </div>

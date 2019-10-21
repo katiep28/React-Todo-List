@@ -6,7 +6,7 @@ class ToDoList extends React.Component {
   render() {
     return (
 
-      <div className="row">
+      <div className="row padditemrow">
         <div className="col-6  col-blue">
           <div>
             <li>{this.props.text}</li>

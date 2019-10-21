@@ -4,7 +4,7 @@ import "./CompletedTasks.css";
 class CompletedTasks extends React.Component {
   render() {
     return (
-        <div className="row">
+        <div className="row paddrow">
           <div className="col-12 col-yell">
             <h4>Completed Items</h4>
             <ol>
