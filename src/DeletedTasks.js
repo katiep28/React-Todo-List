@@ -5,7 +5,7 @@ class DeletedTasks extends React.Component {
   render() {
     return (
          <div className="row">
-          <div className="col-12 col-red">
+          <div className="col-12 col-red col-lg-12">
             <h4>Deleted Items</h4>
             <ol>
               <li>Buy Cat Food</li>

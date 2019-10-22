@@ -5,7 +5,7 @@ class CompletedTasks extends React.Component {
   render() {
     return (
         <div className="row paddrow">
-          <div className="col-12 col-yell">
+          <div className="col-12 col-yell col-lg-12">
             <h4>Completed Items</h4>
             <ol>
               <li>Ate Lunch</li>

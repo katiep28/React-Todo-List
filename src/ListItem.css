@@ -1,13 +1,21 @@
 
 .text{    color: white;
-    font-size: x-large;
+    font-size: xx-large;;
 }
  .col-blue {
     background-color: rgba(20, 73, 220, 0.844);
 }
 li {
     font-size: medium;
+    padding-left: 10px;
+    margin-left: 20px;
 }
 .padditemrow{
     padding-bottom: 2px;
   }
+i {
+    color: grey;
+}
+.paddiconright {
+    padding-right: 10px;
+}
