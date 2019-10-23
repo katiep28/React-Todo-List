@@ -6,11 +6,9 @@ class DeletedTasks extends React.Component {
     return (
          <div className="row">
           <div className="col-12 col-red col-lg-12">
-            <h4>Deleted Items</h4>
-            <ol>
-              <li>Buy Cat Food</li>
-              <li>Buy Dog Food</li>
-            </ol>
+            <li>
+               {this.props.text}
+            </li>
           </div>
          </div>
     );
