@@ -11,6 +11,7 @@ class AddItem extends React.Component {
     })
   }
 
+
   handleClick =() =>{
     this.props.addTaskFunc(this.state.newTaskText);
     this.setState({

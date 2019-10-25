@@ -9,45 +9,63 @@ import uuid from "uuid/v4";
 
 class App extends React.Component {
   state = {
-    tasks: [
-      { text: "walk the cat", completed: true, date: "2019-10-16", id: uuid() },
-      { text: "brush the fish", completed: false, date: "2019-10-12", id: uuid() },
-      { text: "hoover the grass", completed: false, date: "2019-10-13", id: uuid() },
-      { text: "cut the carpet", completed: true, date: "2019-10-15", id: uuid() },
-      { text: "eat the food", completed: true, date: "2019-10-15", id: uuid() },
-      { text: "learn HTML", completed: true, date: "2019-10-17", id: uuid() }
-    ],
-    completedTasks: [
-      { text: "Drink wine", completed: true, date: "2019-10-16", id: uuid() },
-      { text: "Eat food", completed: false, date: "2019-10-12", id: uuid() }
-    ],
-    deletedTasks: [
-      { text: "Climb Everest", completed: true, date: "2019-10-16", id: uuid() },
-      { text: "Eat an Elephant", completed: false, date: "2019-10-12", id: uuid() }
+    
+    tasks:[
+      { text: "walk the cat", status:"D", date: "2019-10-16", id: uuid() },
+      { text: "brush the fish", status:"C", date: "2019-10-12", id: uuid() },
+      { text: "hoover the grass", status: "N", date: "2019-10-13", id: uuid() },
+      { text: "cut the carpet", status:"N", date: "2019-10-15", id: uuid() },
+      { text: "eat the food", status: "C", date: "2019-10-15", id: uuid() },
+      { text: "learn HTML", status: "N", date: "2019-10-17", id: uuid() },
+      { text: "Drink wine", status:"C",date: "2019-10-16", id: uuid() },
+      { text: "Eat food", status:"C", date: "2019-10-12", id: uuid() },
+      { text: "Climb Everest", status:"N", date: "2019-10-16", id: uuid() },
+      { text: "Eat an Elephant", status:"D", date: "2019-10-12", id: uuid() }
     ]
   }
-  //function to update the taskss with the tasks
+
+  //function to update the taskss with the 
+   //Add that task to the stat
   addTask = (taskText) => {
-    //Create a new task wtih default complete and date properties
+    //Create a new task wtih default status and date properties
     const newTask = {
       text: taskText,
-      completed: false,
+      status:"N",
       date: "2019-10-21",
       id: uuid()
     };
+    const tasksCopy = this.state.tasks.slice();
     //Make a copy of the tasks array
     //never do this.stat.tasks.push item and access it direactly as this causese
     //a problem
-    const tasksCopy = this.state.tasks.slice();
+    
     tasksCopy.push(newTask);
     this.setState({
       tasks: tasksCopy
     });
   }
-  //Add that task to the state
+ 
+  updateTask = (id,newStatus) => {
+    const tasksUpdated = 
+    this.state.tasks.map(item => {
+      if (item.id === id) {
+         item.status = newStatus
+      }
+     })
+     this.setState({
+      tasks: tasksUpdated
+    });
+    // this.state.tasks.map(item =>
+    // alert(item.text + "   " + item.status));
+  }
 
   //Every component must have a render method
-  render() {
+  render()
+     { 
+       const newTasks = this.state.tasks.filter(item => item.status === "N")
+       const completedTasks = this.state.tasks.filter(item => item.status === "C")
+       const deletedTasks = this.state.tasks.filter(item => item.status === "D")
+
     return (
       <div className="container">
         <div className="row paddingbelow">
@@ -60,7 +78,7 @@ class App extends React.Component {
         </div>
         <div className="row">
           <div className="col-9 col-lg-9">
-            <ItemCount count={this.state.tasks.length} />
+            <ItemCount count={newTasks.length} />
           </div>
           <div className="col-3 col-lg-3">
               <h4> Completed Tasks</h4>
@@ -69,28 +87,34 @@ class App extends React.Component {
         <div className="row">
           <div className="col-9 col-lg-9" >
             <ol>
-              {this.state.tasks.map(item => {
-                return <ListItem key={item.id}
-                  text={item.text}
-                  completed={item.complete}
-                  date={item.date} />
-              })}
+               {newTasks.map(item => {
+               return <ListItem 
+               updateTaskFunc={this.updateTask}                 
+               text={item.text}
+               status={item.status}
+               date={item.date}
+               id={item.id}
+                 />
+               })}
             </ol>
           </div>
           <div className="col-12 col-lg-3" >
 
             <ol>
-              {this.state.completedTasks.map(item => {
+              {completedTasks.map(item => 
+              {
                 return <CompletedTasks
                   text={item.text}
-                  date={item.date} />
+                  status={item.status}
+                  date={item.date}
+                  key={item.id} />
               })}
             </ol>
             <div className="row justify-content-center">
               <h4> Deleted Tasks</h4>
           </div>
             <ol>
-                  {this.state.deletedTasks.map(item => {
+                  {deletedTasks.map(item => {
                 return <DeletedTasks
                          text={item.text}
                          date={item.date} />
