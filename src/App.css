@@ -16,7 +16,7 @@ h3 {
 }
 h4{
   color : black;
-  text-align: center
+  text-align: center;
 }
 
 ol{    
@@ -26,4 +26,13 @@ ol{
 
 .paddingbelow{
   padding-bottom: 50px;
+}
+.iconbin {
+  justify-items: left;
+  margin-left: 35px;
+  margin-right: 200px;
+
+}
+.icontick {
+  margin-left: 335px;
 }

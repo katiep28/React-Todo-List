@@ -3,19 +3,25 @@ import "./ListItem.css";
 
 class ListItem extends React.Component {
 
-  state = {
 
-  }
-
-  handleTick = () => {
+  handleCompleteTick = () => {
     this.props.updateTaskFunc(this.props.id, "C");
   }
+  handleDeleteTick = () => {
+    this.props.updateTaskFunc(this.props.id, "D");
+  }
 
-  render() {
+  render( )
+   { 
     return (
       <div className="row padditemrow">
         <div className="col-1">
-          <i className="fa fa-trash"></i>
+          {/* Delte functionality check box  */}
+          <input className="form-check-input paddleft"
+            type="checkbox"
+            id="defaultCheck5"
+            value="option1"
+            onClick={this.handleDeleteTick} />
         </div>
         <div className="col-10  col-blue">
           <div>
@@ -25,17 +31,16 @@ class ListItem extends React.Component {
             </li>
           </div>
         </div>
-        <div className="col-1 justify-content-right">
-          {/* <i class="fa fa-check"></i> */}
-          {/* <button className="btn btn-warning" onClick=
-          {this.handleTick}>Done</button> */}
-          <input className="form-check-input"
+        <div className="col-1 justify-right">
+          {/* <i class="fa fa-check-input"></i>  */}
+          {/* Complete Functionality */}
+          <input className="form-check-input paddleft"
             type="checkbox"
-            id="defaultCheck1"
-            onClick={this.handleTick} />
+            id="defaultCheck5"
+            value="option1"
+            onClick={this.handleCompleteTick}/>
         </div>
       </div>
-
     );
   }
 }
