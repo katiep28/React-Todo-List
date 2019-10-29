@@ -3,7 +3,6 @@ import "./ListItem.css";
 
 class ListItem extends React.Component {
 
-
   handleCompleteTick = () => {
     this.props.updateTaskFunc(this.props.id, "C");
   }
@@ -11,7 +10,7 @@ class ListItem extends React.Component {
     this.props.updateTaskFunc(this.props.id, "D");
   }
 
-  render( )
+  render()
    { 
     return (
       <div className="row padditemrow">

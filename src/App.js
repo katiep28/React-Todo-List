@@ -31,9 +31,12 @@ class App extends React.Component {
     const newTask = {
       text: taskText,
       status: "N",
-      date: "2019-10-21",
+      date: new Date(),
       id: uuid()
     };
+
+alert("Date    " + newTask.date);
+
     const tasksCopy = this.state.tasks.slice();
     //Make a copy of the tasks array
     //never do this.stat.tasks.push item and access it direactly as this causese
