@@ -13,29 +13,33 @@ class App extends React.Component {
     tasks: [
       { text: "walk the cat", status: "D", date: "2019-10-16", id: uuid() },
       { text: "brush the fish", status: "C", date: "2019-10-12", id: uuid() },
-      { text: "hoover the grass", status: "N", date: "2019-10-13", id: uuid() },
-      { text: "cut the carpet", status: "N", date: "2019-10-15", id: uuid() },
-      { text: "eat the food", status: "C", date: "2019-10-15", id: uuid() },
+      { text: "hoover the grass", status: "N", date: "2019-10-15", id: uuid() },
+      { text: "cut the carpet", status: "N", date: "2019-10-13", id: uuid() },
+      { text: "smell the roses", status: "C", date: "2019-10-15", id: uuid() },
       { text: "learn HTML", status: "N", date: "2019-10-17", id: uuid() },
       { text: "Drink wine", status: "C", date: "2019-10-16", id: uuid() },
       { text: "Eat food", status: "C", date: "2019-10-12", id: uuid() },
       { text: "Climb Everest", status: "N", date: "2019-10-16", id: uuid() },
       { text: "Eat an Elephant", status: "D", date: "2019-10-12", id: uuid() }
     ]
+  
   }
 
   //function to update the tasks with the 
   //Add that task to the stat
   addTask = (taskText) => {
-    //Create a new task wtih default status and date properties
-    const newTask = {
+
+  // Set the date for the New task 
+    let moment = require('moment')
+    let myDate = moment().format('YYYY-MM-DD')
+  
+    //Create a new task wtih default status
+    const newTask = { 
       text: taskText,
       status: "N",
-      date: new Date(),
+      date: myDate,
       id: uuid()
     };
-
-alert("Date    " + newTask.date);
 
     const tasksCopy = this.state.tasks.slice();
     //Make a copy of the tasks array
@@ -49,7 +53,6 @@ alert("Date    " + newTask.date);
   }
 
   updateTask = (id, newStatus) => {
-
     const tasksUpdated =
       this.state.tasks.map(item => {
         if (item.id === id) {
@@ -60,13 +63,23 @@ alert("Date    " + newTask.date);
     this.setState({
       tasks: tasksUpdated
     });
-    // this.state.tasks.map(item =>
-    // alert(item.text + "   " + item.status));
   }
 
   //Every component must have a render method
   render() {
-    const newTasks = this.state.tasks.filter(item => item.status === "N")
+    let sorted = this.state.tasks.sort(function (a, b) { 
+
+      if (a.date < b.date) {
+        return -1;
+      }
+      if (a.date > b.date) {
+        return 1;
+      }
+      // dates must be equal
+      return 0;
+        });
+
+    const newTasks = sorted.filter(item => item.status === "N")
     const completedTasks = this.state.tasks.filter(item => item.status === "C")
     const deletedTasks = this.state.tasks.filter(item => item.status === "D")
 

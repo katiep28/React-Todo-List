@@ -22,12 +22,16 @@ class ListItem extends React.Component {
             value="option1"
             onClick={this.handleDeleteTick} />
         </div>
-        <div className="col-10  col-blue">
+        <div className="col-8  col-blue">
           <div>
-            {/* <li className={this.props.completed ? "completedItem" : ""}> */}
             <li>
-              {this.props.text}
+              {this.props.text}   
             </li>
+          </div>
+        </div>
+        <div className="col-2 col-blue">
+          <div>
+              {this.props.date}     
           </div>
         </div>
         <div className="col-1 justify-right">
