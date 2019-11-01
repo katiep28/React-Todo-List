@@ -3,19 +3,18 @@ import ListItem from "./ListItem";
 import CompletedTasks from "./CompletedTasks";
 import DeletedTasks from "./DeletedTasks";
 import AddItem from "./AddItem";
-import ItemCount from "./ItemCount";
 import './App.css';
 import uuid from "uuid/v4";
 
 class App extends React.Component {
   state = {
     tasks: [
-      { text: "walk the cat", status: "D", date: "2019-10-16", id: uuid() },
-      { text: "brush the fish", status: "C", date: "2019-10-12", id: uuid() },
-      { text: "hoover the grass", status: "N", date: "2019-10-15", id: uuid() },
-      { text: "cut the carpet", status: "N", date: "2019-10-13", id: uuid() },
-      { text: "smell the roses", status: "C", date: "2019-10-15", id: uuid() },
-      { text: "learn HTML", status: "N", date: "2019-10-17", id: uuid() },
+      { text: "Walk the cat", status: "D", date: "2019-10-16", id: uuid() },
+      { text: "Brush the fish", status: "C", date: "2019-10-12", id: uuid() },
+      { text: "Hoover the grass", status: "N", date: "2019-10-15", id: uuid() },
+      { text: "Cut the carpet", status: "N", date: "2019-10-13", id: uuid() },
+      { text: "Smell the roses", status: "C", date: "2019-10-15", id: uuid() },
+      { text: "Learn HTML", status: "N", date: "2019-10-17", id: uuid() },
       { text: "Drink wine", status: "C", date: "2019-10-16", id: uuid() },
       { text: "Eat food", status: "C", date: "2019-10-12", id: uuid() },
       { text: "Climb Everest", status: "N", date: "2019-10-16", id: uuid() },
@@ -80,7 +79,7 @@ class App extends React.Component {
       //I found the easiest way to remove the items was to update the sata and use
       // .filter
       this.state.removeTaskArray.map(id => {
-        this.updateTask(id, "R");
+        return this.updateTask(id, "R");
       })
 
       let tempArray = this.state.tasks.filter(item => item.status !== "R");
@@ -130,7 +129,7 @@ class App extends React.Component {
         <div className="row paddingbelow">
           <div className="col-12">
             <h2>{new Date().toDateString()}</h2>
-            <h1> Lists Lists Lists (L3)</h1>
+            <h1> Lists Lists Lists</h1>
             <h3> What do you need to do?</h3>
             <AddItem addTaskFunc={this.addTask} />
           </div>
@@ -140,14 +139,10 @@ class App extends React.Component {
             <h3>
               {newTasks.length} Things To Do
             </h3>
-            {/* <ItemCount count={newTasks.length} /> */}
-          </div>
-          <div className="col-3 col-lg-3">
-            <h4> Completed Tasks</h4>
           </div>
         </div>
         <div className="row">
-          <div className="col-9 col-lg-9" >
+          <div className="col-12 col-lg-8" >
             <ol>
               {newTasks.map(item => {
                 return <ListItem
@@ -161,7 +156,10 @@ class App extends React.Component {
               })}
             </ol>
           </div>
-          <div className="col-12 col-lg-3" >
+          <div className="col-12 col-lg-4" >
+             <div className="row justify-content-center">
+                <h4> Completed Tasks</h4>
+             </div>
             <ol>
               {completedTasks.map(item => {
                 return <CompletedTasks
@@ -188,7 +186,9 @@ class App extends React.Component {
               })}
             </ol>
             <div className="row justify-content-center">
-              <h5>Select Items to Remove</h5>
+              <h4>Select Items to Remove</h4>
+            </div>
+            <div className="row justify-content-center">
               <button type="button"
                 className="btn btn-warning"
                 onClick={this.handleRemove}>
