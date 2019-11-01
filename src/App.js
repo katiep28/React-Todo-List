@@ -21,20 +21,21 @@ class App extends React.Component {
       { text: "Eat food", status: "C", date: "2019-10-12", id: uuid() },
       { text: "Climb Everest", status: "N", date: "2019-10-16", id: uuid() },
       { text: "Eat an Elephant", status: "D", date: "2019-10-12", id: uuid() }
-    ]
-  
+    ],
+    removeTaskArray: []
+
   }
 
   //function to update the tasks with the 
   //Add that task to the stat
   addTask = (taskText) => {
 
-  // Set the date for the New task 
+    // Set the date for the New task 
     let moment = require('moment')
     let myDate = moment().format('YYYY-MM-DD')
-  
+
     //Create a new task wtih default status
-    const newTask = { 
+    const newTask = {
       text: taskText,
       status: "N",
       date: myDate,
@@ -65,10 +66,35 @@ class App extends React.Component {
     });
   }
 
+
+  itemsToRemove = (id) => {
+    const removeIds = this.state.removeTaskArray.slice();
+    removeIds.push(id);
+
+    this.setState({
+      removeTaskArray: removeIds
+    });
+
+  }
+  handleRemove = () => {
+    alert("Are you sure?");
+
+    this.state.removeTaskArray.map(id => {
+        this.updateTask(id, "R");
+    })
+    let tempArray = this.state.tasks.filter(item => item.status !== "R");
+
+    this.setState({
+      tasks: tempArray
+    });
+    this.setState({
+      removeTaskArray: []
+    });
+  }
   //Every component must have a render method
   render() {
-    let sorted = this.state.tasks.sort(function (a, b) { 
 
+    let sorted = this.state.tasks.sort(function (a, b) {
       if (a.date < b.date) {
         return -1;
       }
@@ -77,7 +103,7 @@ class App extends React.Component {
       }
       // dates must be equal
       return 0;
-        });
+    });
 
     const newTasks = sorted.filter(item => item.status === "N")
     const completedTasks = this.state.tasks.filter(item => item.status === "C")
@@ -96,9 +122,7 @@ class App extends React.Component {
         <div className="row">
           <div className="col-9 col-lg-9">
             <h3>
-              <i className="fa fa-trash iconbin"></i>
               {newTasks.length} Things To Do
-              <i class="fa fa-check icontick"></i>
             </h3>
             {/* <ItemCount count={newTasks.length} /> */}
           </div>
@@ -125,6 +149,7 @@ class App extends React.Component {
             <ol>
               {completedTasks.map(item => {
                 return <CompletedTasks
+                  itemsToRemoveFunc={this.itemsToRemove}
                   text={item.text}
                   status={item.status}
                   date={item.date}
@@ -138,12 +163,22 @@ class App extends React.Component {
             <ol>
               {deletedTasks.map(item => {
                 return <DeletedTasks
+                  itemsToRemoveFunc={this.itemsToRemove}
                   text={item.text}
                   status={item.status}
                   date={item.date}
+                  id={item.id}
                   key={item.id} />
               })}
             </ol>
+            <div className="row justify-content-center">
+              <h5>Select Items to Remove</h5>
+              <button type="button"
+                className="btn btn-warning"
+                onClick={this.handleRemove}>
+                Remove
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -15,12 +15,13 @@ class ListItem extends React.Component {
     return (
       <div className="row padditemrow">
         <div className="col-1">
-          {/* Delte functionality check box  */}
-          <input className="form-check-input paddleft"
+          
+          <i className="fa fa-trash" onClick={this.handleDeleteTick}/>
+          {/* <input className="form-check-input paddright"
             type="checkbox"
             id="defaultCheck5"
             value="option1"
-            onClick={this.handleDeleteTick} />
+            onClick={this.handleDeleteTick} /> */}
         </div>
         <div className="col-8  col-blue">
           <div>
@@ -35,13 +36,13 @@ class ListItem extends React.Component {
           </div>
         </div>
         <div className="col-1 justify-right">
-          {/* <i class="fa fa-check-input"></i>  */}
+          <i class="fa fa-check" onClick={this.handleCompleteTick}/>
           {/* Complete Functionality */}
-          <input className="form-check-input paddleft"
+          {/* <input className="form-check-input paddleft"
             type="checkbox"
             id="defaultCheck5"
             value="option1"
-            onClick={this.handleCompleteTick}/>
+            onClick={this.handleCompleteTick}/> */}
         </div>
       </div>
     );

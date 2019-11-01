@@ -20,7 +20,7 @@ class AddItem extends React.Component {
     this.setState({
       newTaskText: ""
     })};
-  
+
 
   render() {
       return (
@@ -32,8 +32,7 @@ class AddItem extends React.Component {
           className="form-control"
           placeholder="E.g. take out bins"
           value={this.state.newTaskText}
-          onChange={this.updateTaskText}
-        />
+          onChange={this.updateTaskText}/>
            <button className="btn btn-warning" onClick=
           {this.handleClick}>Add</button>
          </div>
