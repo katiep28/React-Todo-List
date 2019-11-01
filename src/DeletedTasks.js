@@ -4,9 +4,14 @@ import "./DeletedTasks.css";
 class DeletedTasks extends React.Component {
 
   handleTick = () => {
-    this.props.itemsToRemoveFunc(this.props.id)
+    
+    this.props.itemsToRemoveFunc(this.props.id);
    }
-  render() {
+  
+   render() 
+  
+  {
+   
     return (
       <div className="row">
         <div className="col-10 col-red col-lg-10">

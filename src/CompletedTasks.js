@@ -21,7 +21,7 @@ class CompletedTasks extends React.Component {
         <div className="col-2 col-lg-2justify-right">
         <input className="form-check-input paddleft"
             type="checkbox"
-            id="defaultCheck5"
+            id="defaultCheck4"
             value="option1"
             onClick={this.handleTick} />
         </div>

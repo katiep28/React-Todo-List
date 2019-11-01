@@ -14,6 +14,7 @@ class AddItem extends React.Component {
   handleClick =() =>{
     if (this.state.newTaskText === ""){
       alert("ERROR: You must enter some text before pressing the ADD button");
+
       return;
     }
     this.props.addTaskFunc(this.state.newTaskText);

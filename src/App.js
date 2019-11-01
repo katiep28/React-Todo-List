@@ -9,7 +9,6 @@ import uuid from "uuid/v4";
 
 class App extends React.Component {
   state = {
-
     tasks: [
       { text: "walk the cat", status: "D", date: "2019-10-16", id: uuid() },
       { text: "brush the fish", status: "C", date: "2019-10-12", id: uuid() },
@@ -23,11 +22,10 @@ class App extends React.Component {
       { text: "Eat an Elephant", status: "D", date: "2019-10-12", id: uuid() }
     ],
     removeTaskArray: []
-
   }
 
   //function to update the tasks with the 
-  //Add that task to the stat
+  //Add that task to the state
   addTask = (taskText) => {
 
     // Set the date for the New task 
@@ -54,18 +52,18 @@ class App extends React.Component {
   }
 
   updateTask = (id, newStatus) => {
-    const tasksUpdated =
-      this.state.tasks.map(item => {
+    const tasksUpdated = this.state.tasks.map(item => {
+
         if (item.id === id) {
           item.status = newStatus
         }
         return item;
       })
+
     this.setState({
       tasks: tasksUpdated
     });
   }
-
 
   itemsToRemove = (id) => {
     const removeIds = this.state.removeTaskArray.slice();
@@ -74,26 +72,44 @@ class App extends React.Component {
     this.setState({
       removeTaskArray: removeIds
     });
-
   }
+
   handleRemove = () => {
-    alert("Are you sure?");
-
-    this.state.removeTaskArray.map(id => {
+    //alert("Are you sure?");
+    if (window.confirm("Are you sure you want to permenantly remove these item?")) {
+      //I found the easiest way to remove the items was to update the sata and use
+      // .filter
+      this.state.removeTaskArray.map(id => {
         this.updateTask(id, "R");
-    })
-    let tempArray = this.state.tasks.filter(item => item.status !== "R");
+      })
 
-    this.setState({
-      tasks: tempArray
-    });
+      let tempArray = this.state.tasks.filter(item => item.status !== "R");
+
+      this.setState({
+        tasks: tempArray
+      });
+    }
+    else {
+      // Need to untick check box if the user has cancelled
+      // let check = document.getElementById("defaultCheck5").checked = false
+
+      let check=document.getElementsByTagName('input');
+
+      for(let i=0;i<check.length;i++){
+         if(check[i].type === "checkbox"){
+        check[i].checked=false;
+       }
+      }
+    }
+    // Last step we need to clear the array of items to be removed      
+
     this.setState({
       removeTaskArray: []
     });
   }
   //Every component must have a render method
   render() {
-
+    //Sort the data in date order
     let sorted = this.state.tasks.sort(function (a, b) {
       if (a.date < b.date) {
         return -1;
