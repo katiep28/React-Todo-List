@@ -17,14 +17,14 @@ class ListItem extends React.Component {
         <div className="col-1 col-lg-1">
           <i className="fa fa-trash" onClick={this.handleDeleteTick}/>
         </div>
-        <div className="col-6  col-lg-6 col-blue">
+        <div className="col-7  col-lg-7 col-blue">
           <div>
             <li>
               {this.props.text}   
             </li>
           </div>
         </div>
-        <div className="col-4 col-lg-4 col-blue">
+        <div className="col-3 col-lg-3 col-blue">
           <div>
               {this.props.date}     
           </div>
