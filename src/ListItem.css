@@ -1,10 +1,12 @@
 
 .text{    color: white;
-    font-size: xx-large;;
+    font-size: large;
 }
+
  .col-blue {
     background-color: rgba(20, 73, 220, 0.844);
 }
+
 li {
     font-size: medium;
     padding-left: 10px;
@@ -17,8 +19,8 @@ i {
     color: grey;
 }
 .paddiconright {
-    padding-right: 10px;
+    padding-right: 5px;
 }
 .paddleft {
-    margin-left: 10px;
+    margin-left: 5px;
 }
