@@ -23,6 +23,7 @@ class App extends React.Component {
     removeTaskArray: []
   }
 
+  
   //function to update the tasks with the 
   //Add that task to the state
   addTask = (taskText) => {

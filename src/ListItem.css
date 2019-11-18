@@ -10,18 +10,18 @@
 
 li {
     font-size: medium;
-    padding-left: 10px;
-    margin-left: 20px;
+    padding-left: 5px;
+    margin-left: 15px;
 }
 .padditemrow{
     padding-bottom: 2px;
   }
 i {
     color: grey;
+    margin-left: 1px;
+    margin-right: 1px;
 }
-.paddiconright {
-    padding-right: 5px;
-}
+
 .paddleft {
     margin-left: 5px;
 }
