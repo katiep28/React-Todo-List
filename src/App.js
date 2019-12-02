@@ -5,25 +5,40 @@ import DeletedTasks from "./DeletedTasks";
 import AddItem from "./AddItem";
 import './App.css';
 import uuid from "uuid/v4";
+import axios from "axios";
 
 class App extends React.Component {
   state = {
     tasks: [
-      { text: "Walk the cat", status: "D", date: "2019-10-16", id: uuid() },
-      { text: "Brush the fish", status: "C", date: "2019-10-12", id: uuid() },
-      { text: "Hoover the grass", status: "N", date: "2019-10-15", id: uuid() },
-      { text: "Cut the carpet", status: "N", date: "2019-10-13", id: uuid() },
-      { text: "Smell the roses", status: "C", date: "2019-10-15", id: uuid() },
-      { text: "Learn HTML", status: "N", date: "2019-10-17", id: uuid() },
-      { text: "Drink wine", status: "C", date: "2019-10-16", id: uuid() },
-      { text: "Eat food", status: "C", date: "2019-10-12", id: uuid() },
-      { text: "Climb Everest", status: "N", date: "2019-10-16", id: uuid() },
-      { text: "Eat an Elephant", status: "D", date: "2019-10-12", id: uuid() }
-    ],
+    //   { text: "Walk the cat", status: "D", date: "2019-10-16", id: uuid() },
+    //   { text: "Brush the fish", status: "C", date: "2019-10-12", id: uuid() },
+    //   { text: "Hoover the grass", status: "N", date: "2019-10-15", id: uuid() },
+    //   { text: "Cut the carpet", status: "N", date: "2019-10-13", id: uuid() },
+    //   { text: "Smell the roses", status: "C", date: "2019-10-15", id: uuid() },
+    //   { text: "Learn HTML", status: "N", date: "2019-10-17", id: uuid() },
+    //   { text: "Drink wine", status: "C", date: "2019-10-16", id: uuid() },
+    //   { text: "Eat food", status: "C", date: "2019-10-12", id: uuid() },
+    //   { text: "Climb Everest", status: "N", date: "2019-10-16", id: uuid() },
+    //   { text: "Eat an Elephant", status: "D", date: "2019-10-12", id: uuid() }
+     ],
     removeTaskArray: []
   }
 
-  
+  componentDidMount(){
+    //Make async request to get data
+    axios.get('https://9dcour1we6.execute-api.eu-west-2.amazonaws.com/dev/tasks')
+      .then((response) => {
+        // handle success
+        console.log(response.data.tasks);
+        this.setState({
+          tasks:response.data.tasks
+        })
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+  };
   //function to update the tasks with the 
   //Add that task to the state
   addTask = (taskText) => {
@@ -37,8 +52,15 @@ class App extends React.Component {
       text: taskText,
       status: "N",
       date: myDate,
-      id: uuid()
+      id: uuid
     };
+    axios.post('https://9dcour1we6.execute-api.eu-west-2.amazonaws.com/dev/tasks', newTask)
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
     const tasksCopy = this.state.tasks.slice();
     //Make a copy of the tasks array
@@ -56,6 +78,15 @@ class App extends React.Component {
 
         if (item.id === id) {
           item.status = newStatus
+
+          axios.put('https://9dcour1we6.execute-api.eu-west-2.amazonaws.com/dev/tasks/'+id)
+          .then(function (response) {
+            console.log(item);
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
         }
         return item;
       })
