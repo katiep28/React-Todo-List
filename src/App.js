@@ -9,18 +9,7 @@ import axios from "axios";
 
 class App extends React.Component {
   state = {
-    tasks: [
-    //   { text: "Walk the cat", status: "D", date: "2019-10-16", id: uuid() },
-    //   { text: "Brush the fish", status: "C", date: "2019-10-12", id: uuid() },
-    //   { text: "Hoover the grass", status: "N", date: "2019-10-15", id: uuid() },
-    //   { text: "Cut the carpet", status: "N", date: "2019-10-13", id: uuid() },
-    //   { text: "Smell the roses", status: "C", date: "2019-10-15", id: uuid() },
-    //   { text: "Learn HTML", status: "N", date: "2019-10-17", id: uuid() },
-    //   { text: "Drink wine", status: "C", date: "2019-10-16", id: uuid() },
-    //   { text: "Eat food", status: "C", date: "2019-10-12", id: uuid() },
-    //   { text: "Climb Everest", status: "N", date: "2019-10-16", id: uuid() },
-    //   { text: "Eat an Elephant", status: "D", date: "2019-10-12", id: uuid() }
-     ],
+    tasks: [],
     removeTaskArray: []
   }
 
@@ -54,6 +43,7 @@ class App extends React.Component {
       date: myDate,
       id: uuid
     };
+    //Insert the new task into the database
     axios.post('https://9dcour1we6.execute-api.eu-west-2.amazonaws.com/dev/tasks', newTask)
     .then(function (response) {
       console.log(response);
@@ -78,10 +68,10 @@ class App extends React.Component {
 
         if (item.id === id) {
           item.status = newStatus
-
-          axios.put('https://9dcour1we6.execute-api.eu-west-2.amazonaws.com/dev/tasks/'+id)
+          
+          // Update the status on the database  
+          axios.put('https://9dcour1we6.execute-api.eu-west-2.amazonaws.com/dev/tasks/'+ id + "/" + newStatus)
           .then(function (response) {
-            console.log(item);
             console.log(response);
           })
           .catch(function (error) {
