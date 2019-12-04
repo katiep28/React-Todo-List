@@ -18,7 +18,6 @@ class App extends React.Component {
     axios.get('https://9dcour1we6.execute-api.eu-west-2.amazonaws.com/dev/tasks')
       .then((response) => {
         // handle success
-        console.log(response.data.tasks);
         this.setState({
           tasks:response.data.tasks
         })
@@ -27,7 +26,26 @@ class App extends React.Component {
         // handle error
         console.log(error);
       })
-  };
+    };
+      componentDidUpdate(prevProps) {
+        // Typical usage (don't forget to compare props):
+        // if (this.props.userID !== prevProps.userID) {
+        //   this.fetchData(this.props.userID);
+        // }
+        axios.get('https://9dcour1we6.execute-api.eu-west-2.amazonaws.com/dev/tasks')
+        .then((response) => {
+          // handle success
+          this.setState({
+            tasks:response.data.tasks
+          })
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+
+      };
+
   //function to update the tasks with the 
   //Add that task to the state
   addTask = (taskText) => {
@@ -68,7 +86,7 @@ class App extends React.Component {
 
         if (item.id === id) {
           item.status = newStatus
-          
+
           // Update the status on the database  
           axios.put('https://9dcour1we6.execute-api.eu-west-2.amazonaws.com/dev/tasks/'+ id + "/" + newStatus)
           .then(function (response) {
@@ -100,12 +118,25 @@ class App extends React.Component {
     if (window.confirm("Are you sure you want to permenantly remove these item?")) {
       //I found the easiest way to remove the items was to update the sata and use
       // .filter
-      this.state.removeTaskArray.map(id => {
-        return this.updateTask(id, "R");
-      })
+      // this.state.removeTaskArray.map(id => {
+      //   return this.updateTask(id, "R");
+      // })
 
+      // Delete the status on the database 
+      
+      this.state.removeTaskArray.forEach(id => {
+     
+      axios.delete('https://9dcour1we6.execute-api.eu-west-2.amazonaws.com/dev/tasks/'+ id)
+            .then(function (response) {
+               console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+          })
+      // let tempArray = this.state.tasks.filter(item => item.status !== "R");
       let tempArray = this.state.tasks.filter(item => item.status !== "R");
-
+        //  let tempArray = this.state.tasks.slice;
       this.setState({
         tasks: tempArray
       });
@@ -131,7 +162,7 @@ class App extends React.Component {
   //Every component must have a render method
   render() {
     //Sort the data in date order
-    let sorted = this.state.tasks.sort(function (a, b) {
+    let sorted = this.state.tasks.sort( function (a, b) {
       if (a.date < b.date) {
         return -1;
       }
