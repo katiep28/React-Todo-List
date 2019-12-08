@@ -11,22 +11,24 @@ class ListItem extends React.Component {
   }
 
   render()
-   { 
+   {  
     return (
-      <div className="row padditemrow">
-        <div className="col-1 col-lg-1">
-          <i className="fa fa-trash" onClick={this.handleDeleteTick}/>
+
+     <div className="row padditemrow">
+        <div className="col-1 col-lg-1 align=left">
+           <i className="fa fa-trash fa-2x" onClick={this.handleDeleteTick}/> 
         </div>
-        <div className="col-6  col-lg-8 col-blue">
+        <div className="col-6  col-lg-7 col-blue">
           <div>
             <li>
               {this.props.text}   
             </li>
           </div>
         </div>
-        <div className="col-4 col-lg-2 col-blue">
+        <div className="col-4 col-lg-3 col-blue">
           <div align="right">
-              {this.props.date}     
+              {this.props.date}   
+              
           </div>
         </div>
         <div className="col-1 col-lg-1 justify-right">

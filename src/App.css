@@ -1,27 +1,32 @@
 body{
-  background-color: rgba(0, 229, 255, 0.256);
+  background-color: rgba(149, 220, 194, 0.228);
   }
 
 h1 {
-  color: fuchsia;;
-  text-align: center;
+  color: black;
 }
 h2 {
   color: black;
-  text-align: center;
+  text-align: right;
 }
 h3 {
   color: black;
-  text-align: center;
 }
 h4{
   color : black;
-  text-align: center;
+  text-align: right;
 }
-
+p{
+  size: 10pt;
+}
 ol{    
   color: white;
-  font-size: small;
+  font-size: large;
+}
+
+border {
+  border-style: solid;
+  border-width: thick;
 }
 
 .paddingbelow{

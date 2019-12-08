@@ -3,42 +3,83 @@ import "./AddItem.css";
 
 class AddItem extends React.Component {
   state = {
-    newTaskText:""
+    newTaskText: "",
+    newTaskDate: ""
   }
-  updateTaskText =(event) =>{
+  updateTaskText = (event) => {
     this.setState({
       newTaskText: event.target.value
     })
   }
+  updateTaskDate = (event) => {
+    this.setState({
+      newTaskDate: event.target.value
+    })
+  }
 
-  handleClick =() =>{
-    if (this.state.newTaskText === ""){
+  handleClick = () => {
+    // Set the date for the New task 
+    let moment = require('moment')
+    let today = moment().format('YYYY-MM-DD')
+    if (this.state.newTaskText === "") {
       alert("ERROR: You must enter some text before pressing the ADD button");
-
+    }
+    if (this.state.newTaskDate === "") {
+      alert("ERROR: You must enter a date before pressing the ADD button");
       return;
     }
-    this.props.addTaskFunc(this.state.newTaskText);
+    if (this.state.newTaskDate <= today) {
+      alert("ERROR: The date must not be earlier than today");
+      return;
+    }
+    this.props.addTaskFunc(this.state.newTaskText, this.state.newTaskDate);
     this.setState({
-      newTaskText: ""
-    })};
-
-
+      newTaskText: "",
+      newTaskDate: ""
+    });
+  };
   render() {
-      return (
-        <section>
-         <div align="center">
-          <input
-          id="addItemInput"
-          type="text"
-          className="form-control"
-          placeholder="E.g. take out bins"
-          value={this.state.newTaskText}
-          onChange={this.updateTaskText}/>
-           <button className="btn btn-warning" onClick=
-          {this.handleClick}>Add</button>
-         </div>
-         </section>
-      );
+    return (
+      <section>
+        <div className="row">
+          <div className="col-3 col-lg-3">
+            <h5 align="center"> What do you need to do?</h5>
+          </div>
+          <div className="col-9 col-lg-9">
+            <input
+              id="addItemInput"
+              type="text"
+              className="form-control"
+              placeholder="E.g. take out bins"
+              value={this.state.newTaskText}
+              onChange={this.updateTaskText} />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-3 col-lg-3">
+            <h5 align="center"> When do you need it by?</h5>
+          </div>
+          <div className="col-9 col-lg-9">
+            <input
+              id="addDateInput"
+              type="date"
+              className="duedate"
+              value={this.state.newTaskDate}
+              onChange={this.updateTaskDate} />
+          </div>
+        </div>
+        <div className="row paddingbelow ">
+          <div className="col-3 col-lg-3" />
+          <div className="col-9 col-lg-9">
+            <div>
+              <button className="btn btn-warning"
+                onClick={this.handleClick}>Add
+              </button>
+            </div>
+          </div>
+        </div>
+      </section >
+    );
   }
 }
 

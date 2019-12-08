@@ -13,62 +13,62 @@ class App extends React.Component {
     removeTaskArray: []
   }
 
-  componentDidMount(){
+  componentDidMount() {
     //Make async request to get data
     axios.get('https://9dcour1we6.execute-api.eu-west-2.amazonaws.com/dev/tasks')
       .then((response) => {
         // handle success
         this.setState({
-          tasks:response.data.tasks
+          tasks: response.data.tasks
         })
       })
       .catch(function (error) {
         // handle error
         console.log(error);
       })
-    };
-      componentDidUpdate(prevProps) {
-        // Typical usage (don't forget to compare props):
-        // if (this.props.userID !== prevProps.userID) {
-        //   this.fetchData(this.props.userID);
-        // }
-        axios.get('https://9dcour1we6.execute-api.eu-west-2.amazonaws.com/dev/tasks')
-        .then((response) => {
-          // handle success
-          this.setState({
-            tasks:response.data.tasks
-          })
+  };
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    // if (this.props.userID !== prevProps.userID) {
+    //   this.fetchData(this.props.userID);
+    // }
+    axios.get('https://9dcour1we6.execute-api.eu-west-2.amazonaws.com/dev/tasks')
+      .then((response) => {
+        // handle success
+        this.setState({
+          tasks: response.data.tasks
         })
-        .catch(function (error) {
-          // handle error
-          console.log(error);
-        })
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
 
-      };
+  };
 
   //function to update the tasks with the 
   //Add that task to the state
-  addTask = (taskText) => {
+  addTask = (taskText, taskDate) => {
 
     // Set the date for the New task 
-    let moment = require('moment')
-    let myDate = moment().format('YYYY-MM-DD')
+    // let moment = require('moment')
+    // let myDate = moment().format('YYYY-MM-DD')
 
     //Create a new task wtih default status
     const newTask = {
       text: taskText,
       status: "N",
-      date: myDate,
+      date: taskDate,
       id: uuid
     };
     //Insert the new task into the database
     axios.post('https://9dcour1we6.execute-api.eu-west-2.amazonaws.com/dev/tasks', newTask)
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 
     const tasksCopy = this.state.tasks.slice();
     //Make a copy of the tasks array
@@ -84,20 +84,20 @@ class App extends React.Component {
   updateTask = (id, newStatus) => {
     const tasksUpdated = this.state.tasks.map(item => {
 
-        if (item.id === id) {
-          item.status = newStatus
+      if (item.id === id) {
+        item.status = newStatus
 
-          // Update the status on the database  
-          axios.put('https://9dcour1we6.execute-api.eu-west-2.amazonaws.com/dev/tasks/'+ id + "/" + newStatus)
+        // Update the status on the database  
+        axios.put('https://9dcour1we6.execute-api.eu-west-2.amazonaws.com/dev/tasks/' + id + "/" + newStatus)
           .then(function (response) {
             console.log(response);
           })
           .catch(function (error) {
             console.log(error);
           });
-        }
-        return item;
-      })
+      }
+      return item;
+    })
 
     this.setState({
       tasks: tasksUpdated
@@ -123,20 +123,20 @@ class App extends React.Component {
       // })
 
       // Delete the status on the database 
-      
+
       this.state.removeTaskArray.forEach(id => {
-     
-      axios.delete('https://9dcour1we6.execute-api.eu-west-2.amazonaws.com/dev/tasks/'+ id)
-            .then(function (response) {
-               console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+
+        axios.delete('https://9dcour1we6.execute-api.eu-west-2.amazonaws.com/dev/tasks/' + id)
+          .then(function (response) {
+            console.log(response);
           })
+          .catch(function (error) {
+            console.log(error);
+          });
+      })
       // let tempArray = this.state.tasks.filter(item => item.status !== "R");
       let tempArray = this.state.tasks.filter(item => item.status !== "R");
-        //  let tempArray = this.state.tasks.slice;
+      //  let tempArray = this.state.tasks.slice;
       this.setState({
         tasks: tempArray
       });
@@ -145,12 +145,12 @@ class App extends React.Component {
       // Need to untick check box if the user has cancelled
       // let check = document.getElementById("defaultCheck5").checked = false
 
-      let check=document.getElementsByTagName('input');
+      let check = document.getElementsByTagName('input');
 
-      for(let i=0;i<check.length;i++){
-         if(check[i].type === "checkbox"){
-        check[i].checked=false;
-       }
+      for (let i = 0; i < check.length; i++) {
+        if (check[i].type === "checkbox") {
+          check[i].checked = false;
+        }
       }
     }
     // Last step we need to clear the array of items to be removed      
@@ -162,7 +162,7 @@ class App extends React.Component {
   //Every component must have a render method
   render() {
     //Sort the data in date order
-    let sorted = this.state.tasks.sort( function (a, b) {
+    let sorted = this.state.tasks.sort(function (a, b) {
       if (a.date < b.date) {
         return -1;
       }
@@ -179,19 +179,33 @@ class App extends React.Component {
 
     return (
       <div className="container">
-        <div className="row paddingbelow">
-          <div className="col-12">
-            <h2>{new Date().toDateString()}</h2>
-            <h1> Lists Lists Lists</h1>
-            <h3> What do you need to do?</h3>
-            <AddItem addTaskFunc={this.addTask} />
+        <div className="row">
+          <div className="col-8">
+            <h2 align="right">Lists Lists Lists (L3)</h2>
+          </div>
+          <div className="col-4 align=right">
+             <h4>{new Date().toDateString()}</h4>
           </div>
         </div>
+        <div>
+            <AddItem addTaskFunc={this.addTask} />
+        </div>
+
         <div className="row">
-          <div className="col-9 col-lg-9">
-            <h3>
+          <div className="col-1 col-lg-1">
+            <p align="right">
+              Delete
+            </p>
+          </div>
+          <div className="col-10 col-lg-6">
+            <h3 align="center">
               {newTasks.length} Things To Do
             </h3>
+          </div>
+          <div className="col-1 col-lg-1">
+            <p align="center">
+              Complete
+            </p>
           </div>
         </div>
         <div className="row">
@@ -202,17 +216,17 @@ class App extends React.Component {
                   updateTaskFunc={this.updateTask}
                   text={item.text}
                   status={item.status}
-                  date={item.date}
+                  date={item.date.substring(0, 10)}
                   id={item.id}
                   key={item.id}
                 />
               })}
             </ol>
           </div>
-          <div className="col-12 col-lg-4" >
-             <div className="row justify-content-center">
-                <h4> Completed Tasks</h4>
-             </div>
+          <div className="col-12 col-lg-4 border border-secondary border-thick" >
+            <div className="row justify-content-center">
+              <h4> Completed Tasks</h4>
+            </div>
             <ol>
               {completedTasks.map(item => {
                 return <CompletedTasks
@@ -250,6 +264,9 @@ class App extends React.Component {
             </div>
           </div>
         </div>
+        <footer className="container-fluid">
+          <p>Website created by KP Creations</p>
+        </footer>
       </div>
     )
   }
