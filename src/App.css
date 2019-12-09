@@ -1,3 +1,25 @@
+@media all and (max-width: 1200px) { /* screen size until 1200px */
+  body {
+      font-size: 1.5em; /* 1.5x default size */
+  }
+}
+@media all and (max-width: 1000px) { /* screen size until 1000px */
+  body {
+      font-size: 1.2em; /* 1.2x default size */
+      }
+  }
+@media all and (max-width: 400px) { /* screen size until 500px */
+  body {
+      font-size: 0.8em; /* 0.8x default size */
+      }
+  }
+
+
+
+
+
+
+
 body{
   background-color: rgba(149, 220, 194, 0.228);
   }
@@ -7,7 +29,7 @@ h1 {
 }
 h2 {
   color: black;
-  text-align: right;
+  text-align: right;  
 }
 h3 {
   color: black;

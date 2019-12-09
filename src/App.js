@@ -180,10 +180,10 @@ class App extends React.Component {
     return (
       <div className="container">
         <div className="row paddingbelow">
-          <div className="col-8">
+          <div className="col-12 col-lg-8">
             <h2 align="right">Lists Lists Lists (L3)</h2>
           </div>
-          <div className="col-4 align=right">
+          <div className="col-12 col-lg-4 align=right">
              <h4>{new Date().toDateString()}</h4>
           </div>
         </div>

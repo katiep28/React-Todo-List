@@ -42,10 +42,10 @@ class AddItem extends React.Component {
     return (
       <section>
         <div className="row">
-          <div className="col-3 col-lg-3">
-            <h5 align="center"> What do you need to do?</h5>
+          <div className="col-12 col-lg-3">
+            <h5 align="left"> What do you need to do?</h5>
           </div>
-          <div className="col-9 col-lg-9">
+          <div className="col-12 col-lg-9">
             <input
               id="addItemInput"
               type="text"
@@ -56,10 +56,10 @@ class AddItem extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-3 col-lg-3">
-            <h5 align="center"> When do you need it by?</h5>
+          <div className="col-12 col-lg-3">
+            <h5 align="left"> When do you need it by?</h5>
           </div>
-          <div className="col-9 col-lg-9">
+          <div className="col-12 col-lg-9">
             <input
               id="addDateInput"
               type="date"

@@ -18,7 +18,7 @@ class ListItem extends React.Component {
         <div className="col-1 col-lg-1 align=left">
            <i className="fa fa-trash fa-1x" onClick={this.handleDeleteTick}/> 
         </div>
-        <div className="col-6  col-lg-7 col-blue">
+        <div className="col-6 col-lg-7 col-blue">
           <div>
             <li>
               {this.props.text}   
@@ -26,9 +26,8 @@ class ListItem extends React.Component {
           </div>
         </div>
         <div className="col-4 col-lg-3 col-blue">
-          <div align="right">
+          <div className="dateSize" align="right">
               {this.props.date}   
-              
           </div>
         </div>
         <div className="col-1 col-lg-1 justify-right">

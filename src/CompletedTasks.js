@@ -18,7 +18,7 @@ class CompletedTasks extends React.Component {
             {this.props.text}
           </li>
         </div>
-        <div className="col-2 col-lg-2justify-right">
+        <div className="col-2 col-lg-2 justify-right">
           <input className="form-check-input paddleft"
             type="checkbox"
             id="defaultCheck4"
