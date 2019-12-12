@@ -179,38 +179,35 @@ class App extends React.Component {
 
     return (
       <div className="container">
-        <div className="row paddingbelow">
-          <div className="col-12 col-lg-8">
-            <h2 align="right">Lists Lists Lists (L3)</h2>
-          </div>
-          <div className="col-12 col-lg-4 align=right">
-             <h4>{new Date().toDateString()}</h4>
-          </div>
-        </div>
+        <div className="row">
+          <div className="col-12 col-lg-12 border border-secondary border-thick"> 
+          {/* <img src="https://rappstarcom.files.wordpress.com/2012/09/c9b24-mylistim.gif?w=320&h=144" alt="" align="center"/> */}
+          <h2 className="font-italic" align= "center">Lists Lists Lists</h2>         
         <div>
             <AddItem addTaskFunc={this.addTask} />
         </div>
-
-        <div className="row">
+        </div>
+          </div>
+        <div className="row paddingabove">
           <div className="col-1 col-lg-1">
-            <p align="right">
-              Delete
+            <p align="left">
+              Del
             </p>
           </div>
           <div className="col-10 col-lg-6">
-            <h3 align="center">
+            <h4 align="center">
               {newTasks.length} Things To Do
-            </h3>
+            </h4>
           </div>
           <div className="col-1 col-lg-1">
             <p align="center">
-              Complete
+              Done
             </p>
           </div>
         </div>
-        <div className="row">
+        <div className="row paddingbelow">
           <div className="col-12 col-lg-8" >
-            <ol>
+            <ol className="list-group">
               {newTasks.map(item => {
                 return <ListItem
                   updateTaskFunc={this.updateTask}
@@ -224,7 +221,7 @@ class App extends React.Component {
             </ol>
           </div>
           <div className="col-12 col-lg-4 border border-secondary border-thick" >
-            <div className="row justify-content-center">
+            <div className="row justify-content-center paddingabove">
               <h4> Completed Tasks</h4>
             </div>
             <ol>

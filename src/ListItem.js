@@ -16,7 +16,8 @@ class ListItem extends React.Component {
 
      <div className="row padditemrow">
         <div className="col-1 col-lg-1 align=left">
-           <i className="fa fa-trash fa-1x" onClick={this.handleDeleteTick}/> 
+           <i className="fa fa-trash fa-1x" 
+              onClick={this.handleDeleteTick}/> 
         </div>
         <div className="col-6 col-lg-7 col-blue">
           <div>

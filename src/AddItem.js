@@ -28,7 +28,7 @@ class AddItem extends React.Component {
       alert("ERROR: You must enter a date before pressing the ADD button");
       return;
     }
-    if (this.state.newTaskDate <= today) {
+    if (this.state.newTaskDate < today) {
       alert("ERROR: The date must not be earlier than today");
       return;
     }
@@ -40,8 +40,8 @@ class AddItem extends React.Component {
   };
   render() {
     return (
-      <section>
-        <div className="row">
+      <section className= "add">
+        <div className="row paddingabove paddingleftright">
           <div className="col-12 col-lg-3">
             <h5 align="left"> What do you need to do?</h5>
           </div>
@@ -55,7 +55,7 @@ class AddItem extends React.Component {
               onChange={this.updateTaskText} />
           </div>
         </div>
-        <div className="row">
+        <div className="row paddingleftright">
           <div className="col-12 col-lg-3">
             <h5 align="left"> When do you need it by?</h5>
           </div>
@@ -68,7 +68,7 @@ class AddItem extends React.Component {
               onChange={this.updateTaskDate} />
           </div>
         </div>
-        <div className="row paddingbelow ">
+        <div className="row paddingbelow">
           <div className="col-3 col-lg-3" />
           <div className="col-9 col-lg-9">
             <div>
