@@ -178,17 +178,20 @@ class App extends React.Component {
     const deletedTasks = this.state.tasks.filter(item => item.status === "D")
 
     return (
+      <body>
       <div className="container">
+        <br />
         <div className="row">
-          <div className="col-12 col-lg-12 border border-secondary border-thick"> 
-          {/* <img src="https://rappstarcom.files.wordpress.com/2012/09/c9b24-mylistim.gif?w=320&h=144" alt="" align="center"/> */}
-          <h2 className="font-italic" align= "center">Lists Lists Lists</h2>         
-        <div>
-            <AddItem addTaskFunc={this.addTask} />
-        </div>
-        </div>
+          <div className="col-12 col-lg-12 border border-secondary border-thick">
+            {/* <img src="https://rappstarcom.files.wordpress.com/2012/09/c9b24-mylistim.gif?w=320&h=144" alt="" align="center"/> */}
+            <h2 className="font-italic" align="center">Lists Lists Lists</h2>
+            <div>
+              <AddItem addTaskFunc={this.addTask} />
+            </div>
           </div>
-        <div className="row paddingabove">
+        </div>
+        <br />
+        <div className="row paddingabove ">
           <div className="col-1 col-lg-1">
             <p align="left">
               Del
@@ -205,12 +208,13 @@ class App extends React.Component {
             </p>
           </div>
         </div>
-        <div className="row paddingbelow">
-          <div className="col-12 col-lg-8" >
+        <div className="row paddingbelow ">
+          <div className="col-12 col-lg-8 border border-secondary border-thick" >
+            <br/>
             <ol className="list-group">
               {newTasks.map(item => {
                 return <ListItem
-                  updateTaskFunc={this.updateTask}
+                  // updateTaskFunc={this.updateTask}
                   text={item.text}
                   status={item.status}
                   date={item.date.substring(0, 10)}
@@ -262,9 +266,10 @@ class App extends React.Component {
           </div>
         </div>
         <footer className="container-fluid">
-          <p>Website created by KP Creations</p>
+          <p>Website created by Kr8P</p>
         </footer>
       </div>
+      </body>
     )
   }
 }

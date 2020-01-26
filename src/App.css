@@ -26,7 +26,8 @@ ol{
 img {
   align-items : center;
   height: 100px;
-  width: 320px
+  width: 320px;
+  background-image : url("postit-notes.jpeg");
 }
 border {
   border-style: solid;
