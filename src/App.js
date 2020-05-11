@@ -182,6 +182,7 @@ class App extends React.Component {
       <div className="container">
         <br />
         <div className="row">
+          
           <div className="col-12 col-lg-12 border border-secondary border-thick">
             {/* <img src="https://rappstarcom.files.wordpress.com/2012/09/c9b24-mylistim.gif?w=320&h=144" alt="" align="center"/> */}
             <h2 className="font-italic" align="center">Lists Lists Lists</h2>
@@ -214,7 +215,7 @@ class App extends React.Component {
             <ol className="list-group">
               {newTasks.map(item => {
                 return <ListItem
-                  // updateTaskFunc={this.updateTask}
+                  updateTaskFunc={this.updateTask}
                   text={item.text}
                   status={item.status}
                   date={item.date.substring(0, 10)}
